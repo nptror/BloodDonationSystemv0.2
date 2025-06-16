@@ -1,12 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BDS.Common.DAL;
+using BDS.Common.Response;
+using BDS.DAL.Data;
+using BDS.DAL.Models;
 
 namespace BDS.DAL
 {
-    internal class BloodDonationRegisterRep
+
+    public class BloodDonationRegisterRep : GenericRep<BloodDonationDbContext, BloodDonationRegister>
     {
+        public BloodDonationRegisterRep()
+        { 
+            
+        }
+
+        //public override SingleRsp Read(int id)
+        //{
+
+        //}
     }
 }

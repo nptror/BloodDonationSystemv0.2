@@ -1,12 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BDS.BLL;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BDS.Web.Controllers
 {
-    public class BloodDonationRegisterController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+
+    public class BloodDonationRegisterController : ControllerBase
     {
-        public IActionResult Index()
+        private BloodDonationRegisterSvc _bloodDonationRegisterScv;
+        public BloodDonationRegisterController()
         {
-            return View();
+
+            _bloodDonationRegisterScv = new BloodDonationRegisterSvc();
         }
+
+        
     }
 }

@@ -1,12 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BDS.Common.BLL;
+using BDS.Common.Response;
+using BDS.DAL;
+using BDS.DAL.Models;
 
 namespace BDS.BLL
 {
-    internal class BloodDonationRegisterSvc
+
+    public class BloodDonationRegisterSvc : GenericSvc<BloodDonationRegisterRep, BloodDonationRegister>
     {
+        private BloodDonationRegisterRep _bloodDonationRegisterRsp;
+        public BloodDonationRegisterSvc()
+        {
+            _bloodDonationRegisterRsp = new BloodDonationRegisterRep();
+        }
+
+        
     }
 }
