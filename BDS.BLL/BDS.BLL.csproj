@@ -15,4 +15,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BDS.Common\BDS.Common.csproj" />
+    <ProjectReference Include="..\BDS.DAL\BDS.DAL.csproj" />
+  </ItemGroup>
+
 </Project>
