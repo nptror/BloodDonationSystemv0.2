@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using BDS.DAL.Models;
+﻿using BDS.DAL.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace BDS.DAL.Data;

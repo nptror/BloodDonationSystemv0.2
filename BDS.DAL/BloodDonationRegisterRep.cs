@@ -13,9 +13,13 @@ namespace BDS.DAL
             
         }
 
-        //public override SingleRsp Read(int id)
-        //{
-
-        //}
+        public new void Create(BloodDonationRegister m)
+        {
+            if (m == null)
+            {
+                throw new ArgumentNullException(nameof(m), "BloodDonationRegister cannot be null");
+            }
+            base.Create(m);
+        }
     }
 }

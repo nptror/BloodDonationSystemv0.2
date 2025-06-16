@@ -23,6 +23,7 @@ namespace BDS.BLL
         {
             var res = new SingleRsp();
             res.Data = _userRep.ReadById(id);
+            return res;
             //var res = new SingleRsp();
             //var user = _userRep.ReadById(id);
             //if (user != null)
@@ -33,7 +34,7 @@ namespace BDS.BLL
             //{
             //    res.SetError("User not found");
             //}
-            return res;
+
         }
     }
 }
