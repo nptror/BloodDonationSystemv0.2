@@ -19,5 +19,10 @@ namespace BDS.DAL.Repository
             }
             base.Create(m);
         }
+
+        //public override List<BloodDonationRegister> Read() 
+        //{
+        
+        //}
     }
 }

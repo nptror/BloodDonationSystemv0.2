@@ -39,8 +39,26 @@ namespace BDS.Web.Controllers
             });
         }
 
+        [HttpGet("get-registers/{userId}")]
+        public IActionResult GetRegisters(int userId)
+        {
+            var res = _bloodDonationRegisterScv.Read(userId);
+            if (res == null || !res.Any())
+            {
+                return NotFound(new
+                {
+                    success = false,
+                    message = "No donation registers found for this user"
+                });
+            }
+            return Ok(new
+            {
+                success = true,
+                data = res
+            });
 
 
 
+        }
     }
 }

@@ -21,5 +21,13 @@ namespace BDS.DAL.Repository
             }
             base.Create(m);
         }
+        public List<BloodDonationRegister> Read(int userId)
+        {
+            return GetAll
+           .Where(r => r.UserId == userId)
+           .OrderByDescending(r => r.RegisterDate) // nếu muốn sắp xếp theo ngày đăng ký mới nhất
+           .ToList();
+        }
+
     }
 }

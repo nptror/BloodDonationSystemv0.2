@@ -53,7 +53,7 @@ namespace BDS.BLL.Service
                     DonationAddress = req.DonationAddress,
                     Status = "Pending"
                 };
-
+                 
                 _rep.Create(register);
             }
             catch (Exception ex)
@@ -62,6 +62,12 @@ namespace BDS.BLL.Service
             }
 
             return res;
+        }
+
+
+        public List<BloodDonationRegister> Read(int userId)
+        {
+            return _bloodDonationRegisterRsp.Read(userId);
         }
 
 
