@@ -2,7 +2,7 @@
 using BDS.DAL.Data;
 using BDS.DAL.Models;
 
-namespace BDS.DAL
+namespace BDS.DAL.Repository
 {
     public class BloodRequestRep : GenericRep<BloodDonationDbContext, BloodRequest>
     {

@@ -2,9 +2,9 @@
 using BDS.DAL.Data;
 using BDS.DAL.Models;
 
-namespace BDS.DAL
+namespace BDS.DAL.Repository
 {
-    public class UserRep : GenericRep<BloodDonationDbContext,Models.User>
+    public class UserRep : GenericRep<BloodDonationDbContext,User>
     {
         public UserRep()
         {

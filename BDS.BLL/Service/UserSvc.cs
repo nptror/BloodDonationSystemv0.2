@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using BDS.Common.BLL;
 using BDS.Common.Response;
-using BDS.DAL;
 using BDS.DAL.Models;
+using BDS.DAL.Repository;
 
-namespace BDS.BLL
+namespace BDS.BLL.Service
 {
     public class UserSvc : GenericSvc<UserRep, User>
     {
