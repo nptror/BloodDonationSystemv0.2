@@ -7,6 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession();
 
 // Lấy chuỗi kết nối từ cấu hình
 //var connectionString = builder.Configuration.GetConnectionString("cnn");
@@ -30,7 +32,7 @@ var app = builder.Build();
 
 app.UseSwagger();
 app.UseSwaggerUI();
-
+app.UseSession();
 
 app.UseHttpsRedirection();
 app.UseAuthorization();

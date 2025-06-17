@@ -11,13 +11,15 @@ namespace BDS.Common.Helpers
     {
         public static bool IsValidPhone(string phoneNumber)
         {
-            var validPhone = new Regex(@"^(0|84)(2(0[3-9]|1[0-689]|2[0-25-9]|3[2-9]|4[0-9]|5[124-9]|6[0369]|7[0-7]|8[0-9]|9[012346789])|3[2-9]|5[25689]|7[06-9]|8[0-9]|9[012346789])([0-9]{7})$");
+            // xác thực các đầu số việt nam
+            var validPhone = new Regex(@"^0(3[2-9]|5[6|8|9]|7[0|6-9]|8[1-6|8|9]|9[0-9])\d{7}$");
             return validPhone.IsMatch(phoneNumber);
         }
 
         public static bool IsStrongPassword(string password)
-        {
-            var strongPassword = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$");
+        {   
+            // kiểm tra mật khẩu mạnh
+            var strongPassword = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$%^@$!%*?&])[A-Za-z\d#$%^@$!%*?&]{8,}$");
             return strongPassword.IsMatch(password);
         }
     }
