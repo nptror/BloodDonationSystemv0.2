@@ -18,7 +18,7 @@ namespace BDS.Web.Controllers
             _UserSvc = new UserSvc();
         }
 
-        [HttpPost("get-by-id")]
+        [HttpPost("GetById")]
         public IActionResult GetById([FromBody] SimpleReq simpleReq)
         {
             var res = new SingleRsp();
