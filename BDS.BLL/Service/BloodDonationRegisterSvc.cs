@@ -19,7 +19,6 @@ namespace BDS.BLL.Service
 
         public SingleRsp Create(BloodDonationRegisterDTO req)
         {
-            
             var res = new SingleRsp();
 
             try
@@ -33,12 +32,12 @@ namespace BDS.BLL.Service
                 }
 
                 // 2. (Tuỳ chọn) Kiểm tra người dùng này có đăng ký trong vòng 90 ngày gần nhất không
-                var recentRegister = _rep.Read(r => r.UserId == req.UserId &&
-                                                     r.RegisterDate > DateOnly.FromDateTime(DateTime.Now.AddDays(-90)))
-                                         .FirstOrDefault();
-                if (recentRegister != null)
+                var isWithin90Days = req.RegisterDate >= DateOnly.FromDateTime(DateTime.Now.AddDays(-90));
+
+
+                if (isWithin90Days)
                 {
-                    res.SetError("User already registered within last 90 days");
+                    res.SetError("Register date must be within the last 90 days.");
                     return res;
                 }
 
@@ -47,13 +46,13 @@ namespace BDS.BLL.Service
                 var register = new BloodDonationRegister
                 {
                     UserId = req.UserId,
-                    RegisterDate = DateOnly.FromDateTime(now),
-                    AvailableDate = DateOnly.FromDateTime(now.AddDays(90)),
+                    RegisterDate = req.RegisterDate,
+                    AvailableDate = req.RegisterDate?.AddDays(90), // Fix: Use nullable DateOnly's AddDays method
                     Notes = req.Notes,
                     DonationAddress = req.DonationAddress,
                     Status = "Pending"
                 };
-                 
+
                 _rep.Create(register);
             }
             catch (Exception ex)

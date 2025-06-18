@@ -9,6 +9,7 @@ namespace BDS.Common.DTO
     public class BloodDonationRegisterDTO
     {
         public int UserId { get; set; }
+        public DateOnly? RegisterDate { get; set; }
         public string? Notes { get; set; }
         public string DonationAddress { get; set; } = string.Empty;
 
