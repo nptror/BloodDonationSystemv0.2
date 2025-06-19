@@ -116,5 +116,38 @@ namespace BDS.Web.Controllers
                 message = "Donation register deleted successfully"
             });
         }
+
+
+        /// <summary>
+        /// USER Cập nhật thông tin bản ghi đăng ký hiến máu
+        ///  STAFF cập nhật trạng thái đơn đăng ký hiến máu
+        /// </summary>
+        /// <param name="req"></param>
+        /// <returns></returns>
+        [HttpPut("update-register")]
+        public IActionResult UpdateRegister([FromBody] BloodDonationRegisterDTO req)
+        {
+            var res = _bloodDonationRegisterScv.Update(req);
+            if (!res.Success)
+            {
+                return BadRequest(new
+                {
+                    success = false,
+                    message = res.Message
+                });
+            }
+            return Ok(new
+            {
+                success = true,
+                data = res.Data
+            });
+        }
+
+
     }
+
+
+
+
+
 }

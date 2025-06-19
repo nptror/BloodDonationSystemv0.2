@@ -94,6 +94,47 @@ namespace BDS.BLL.Service
             }
             return res;
         }
+
+
+        /// <summary>
+        ///  USER Cập nhật thông tin đơn đăng ký hiến máu đã tạo trước đó
+        ///  STAFF cập nhật trạng thái đơn đăng ký hiến máu
+        /// </summary>
+        /// <param name="req"></param>
+        /// <returns></returns>
+        public SingleRsp Update(BloodDonationRegisterDTO req)
+        {
+            var res = new SingleRsp();
+            try
+            {
+                // 1. Kiểm tra UserId có tồn tại không
+                var user = _userRep.Read(u => u.UserId == req.UserId).FirstOrDefault();
+                if (user == null)
+                {
+                    res.SetError("User not found");
+                    return res;
+                }
+                // 2. Tìm bản ghi cần cập nhật
+                var register = _bloodDonationRegisterRsp.ReadById(req.RegisterId);
+                if (register == null)
+                {
+                    res.SetError("No donation register found for the given user ID.");
+                    return res;
+                }
+                // 3. Cập nhật thông tin
+                register.RegisterDate = req.RegisterDate;
+                register.AvailableDate = req.RegisterDate?.AddDays(90);
+                register.DonationAddress = req.DonationAddress;
+                register.Status = req.Status ?? register.Status; // Giữ nguyên nếu không có giá trị mới
+                register.Notes = req.Notes;
+                _rep.Update(register);
+            }
+            catch (Exception ex)
+            {
+                res.SetError("Error updating donation register: " + ex.Message);
+            }
+            return res;
+        }
         /// <summary>
         /// Xóa bản ghi đăng ký hiến máu theo RegisterId
         /// </summary>

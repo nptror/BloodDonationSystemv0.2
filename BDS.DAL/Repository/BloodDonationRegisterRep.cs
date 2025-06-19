@@ -9,8 +9,8 @@ namespace BDS.DAL.Repository
     public class BloodDonationRegisterRep : GenericRep<BloodDonationDbContext, BloodDonationRegister>
     {
         public BloodDonationRegisterRep()
-        { 
-            
+        {
+
         }
         /// <summary>
         /// Tạo bản ghi đăng ký hiến máu mới
@@ -63,5 +63,23 @@ namespace BDS.DAL.Repository
             base.Delete(m);
         }
 
+
+        /// <summary>
+        ///  USER Cập nhật  1 SỐ THÔNG TIN bản ghi đăng ký hiến máu
+        /// </summary>
+        /// <param name="old"></param>
+        /// <param name="new"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public void Update(BloodDonationRegister @new)
+        {
+            if (@new == null)
+            {
+                throw new ArgumentNullException("BloodDonationRegister cannot be null");
+            }
+            base.Update(@new);
+        }
+
+       
     }
 }
