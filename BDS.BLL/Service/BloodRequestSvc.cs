@@ -15,6 +15,11 @@ namespace BDS.BLL.Service
             _bloodRequestRep = new BloodRequestRep();
         }
 
+        /// <summary>
+        /// Tạo bản ghi yêu cầu máu mới
+        /// </summary>
+        /// <param name="req"></param>
+        /// <returns></returns>
         public SingleRsp Create(BloodRequestDTO req)
         {
             var res = new SingleRsp();

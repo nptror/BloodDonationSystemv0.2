@@ -17,6 +17,12 @@ namespace BDS.Web.Controllers
             _bloodDonationRegisterScv = new BloodDonationRegisterSvc();
         }
 
+
+        /// <summary>
+        /// Tạo bản ghi đăng ký hiến máu mới
+        /// </summary>
+        /// <param name="req"></param>
+        /// <returns></returns>
         [HttpPost("register-donation")]
         public IActionResult CreateRegister([FromBody] BloodDonationRegisterDTO req)
         {
@@ -39,6 +45,11 @@ namespace BDS.Web.Controllers
             });
         }
 
+        /// <summary>
+        /// Lấy danh sách các bản ghi đăng ký hiến máu của người dùng theo UserId
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         [HttpGet("get-registers/{userId}")]
         public IActionResult GetRegisters(int userId)
         {
@@ -56,9 +67,54 @@ namespace BDS.Web.Controllers
                 success = true,
                 data = res
             });
+        }
 
+        /// <summary>
+        /// Lấy thông tin bản ghi đăng ký hiến máu theo UserId
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        [HttpGet("get-register/{userId}")]
+        public IActionResult GetRegisterById(int userId)
+        {
+            var res = _bloodDonationRegisterScv.ReadById(userId);
+            if (res == null)
+            {
+                return NotFound(new
+                {
+                    success = false,
+                    message = "No donation register found for this user"
+                });
+            }
+            return Ok(new
+            {
+                success = true,
+                data = res
+            });
+        }
 
-
+        /// <summary>
+        /// Xoá bản ghi đăng ký hiến máu theo RegisterId
+        /// </summary>
+        /// <param name="registerId"></param>
+        /// <returns></returns>
+        [HttpDelete("delete-register/{registerId}")]
+        public IActionResult DeleteRegister(int registerId)
+        {
+            var res = _bloodDonationRegisterScv.Delete(registerId);
+            if (!res.Success)
+            {
+                return NotFound(new
+                {
+                    success = false,
+                    message = res.Message
+                });
+            }
+            return Ok(new
+            {
+                success = true,
+                message = "Donation register deleted successfully"
+            });
         }
     }
 }

@@ -17,7 +17,11 @@ namespace BDS.Web.Controllers
         {
             _UserSvc = new UserSvc();
         }
-
+        /// <summary>
+        /// Lấy thông tin người dùng theo Id
+        /// </summary>
+        /// <param name="simpleReq"></param>
+        /// <returns></returns>
         [HttpPost("get-by-id")]
         public IActionResult GetById([FromBody] SimpleReq simpleReq)
         {

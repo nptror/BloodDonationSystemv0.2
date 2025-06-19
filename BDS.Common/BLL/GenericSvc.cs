@@ -85,10 +85,6 @@
             return null;
         }
 
-        public virtual int Remove(int id)
-        {
-            return 0;
-        }
 
         public virtual SingleRsp Restore(int id)
         {

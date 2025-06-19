@@ -16,6 +16,11 @@ namespace BDS.Web.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Tạo bản ghi yêu cầu máu mới
+        /// </summary>
+        /// <param name="req"></param>
+        /// <returns></returns>
         [HttpPost("register-recipient")]
         public IActionResult CreateRegister([FromBody] BloodRequestDTO req)
         {

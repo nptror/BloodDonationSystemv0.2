@@ -94,7 +94,7 @@ namespace BDS.Common.BLL
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        int Remove(int id);
+        
 
         #endregion
 

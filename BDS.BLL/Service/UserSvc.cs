@@ -18,7 +18,11 @@ namespace BDS.BLL.Service
         {
             _userRep = new UserRep();
         }
-
+        /// <summary>
+        /// Trả về User theo Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public override SingleRsp ReadById(int id)
         {
             var res = new SingleRsp();
