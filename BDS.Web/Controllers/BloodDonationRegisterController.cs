@@ -39,6 +39,7 @@ namespace BDS.Web.Controllers
             });
         }
 [HttpPost("register-donation")]
+[HttpPost("register-donation")]
         public IActionResult CreateRegister([FromBody] BloodDonationRegisterDTO req)
         {
             var res = _bloodDonationRegisterScv.Create(req);
