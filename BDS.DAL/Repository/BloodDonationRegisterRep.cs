@@ -53,7 +53,7 @@ namespace BDS.DAL.Repository
         /// Xoá bản ghi đăng ký hiến máu
         /// </summary>
         /// <param name="m"></param>
-        /// <exception cref="ArgumentNullException"></exception>
+        ///  <exception cref="ArgumentNullException"></exception>
         public void Delete(BloodDonationRegister m)
         {
             if (m == null)
