@@ -9,6 +9,9 @@ namespace BDS.BLL.Service
     public class BloodDonationRegisterSvc : GenericSvc<BloodDonationRegisterRep, BloodDonationRegister>
     {
          private BloodDonationRegisterRep _bloodDonationRegisterRsp;
+         private BloodDonationRegisterRep _bloodDonationRegisterRsp;
+         private BloodDonationRegisterRep _bloodDonationRegisterRsp;
+         private BloodDonationRegisterRep _bloodDonationRegisterRsp;
         private UserRep _userRep = new UserRep();
         public BloodDonationRegisterSvc()
         {
