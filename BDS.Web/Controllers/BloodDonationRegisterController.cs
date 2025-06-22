@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BDS.Web.Controllers
 {
     public class BloodDonationRegisterController : Controller
+    public class BloodDonationRegisterController : Controller
     {
  private BloodDonationRegisterSvc _bloodDonationRegisterScv;
         public BloodDonationRegisterController()
