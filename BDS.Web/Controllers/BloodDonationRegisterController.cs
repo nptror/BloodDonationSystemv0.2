@@ -7,7 +7,7 @@ namespace BDS.Web.Controllers
 {
     public class BloodDonationRegisterController : Controller
     {
- private BloodDonationRegisterSvc _bloodDonationRegisterScv;
+        private BloodDonationRegisterSvc _bloodDonationRegisterScv;
         public BloodDonationRegisterController()
         {
 
@@ -17,7 +17,7 @@ namespace BDS.Web.Controllers
         {
             return View();
         }
-         [HttpPost("register-donation")]
+        [HttpPost("register-donation")]
         public IActionResult CreateRegister([FromBody] BloodDonationRegisterDTO req)
         {
             var res = _bloodDonationRegisterScv.Create(req);
@@ -36,6 +36,25 @@ namespace BDS.Web.Controllers
             {
                 success = true,
                 data = res.Data
+            });
+        }
+        
+         [HttpGet("get-registers/{userId}")]
+        public IActionResult GetRegisters(int userId)
+        {
+            var res = _bloodDonationRegisterScv.ReadById(userId);
+            if (res == null || !res.Any())
+            {
+                return NotFound(new
+                {
+                    success = false,
+                    message = "No donation registers found for this user"
+                });
+            }
+            return Ok(new
+            {
+                success = true,
+                data = res
             });
         }
     }

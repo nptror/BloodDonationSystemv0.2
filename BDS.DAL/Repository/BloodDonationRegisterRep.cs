@@ -26,5 +26,10 @@ namespace BDS.DAL.Repository
             }
             base.Create(m);
         }
+
+        public override BloodDonationRegister ReadById(int registerId)
+        {
+            return GetAll.Where(r => r.RegisterId == registerId).OrderByDescending(r => r.RegisterDate).FirstOrDefault();
+        }
     }
 }

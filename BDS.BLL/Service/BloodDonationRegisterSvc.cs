@@ -8,7 +8,7 @@ namespace BDS.BLL.Service
 {
     public class BloodDonationRegisterSvc : GenericSvc<BloodDonationRegisterRep, BloodDonationRegister>
     {
-         private BloodDonationRegisterRep _bloodDonationRegisterRsp;
+        private BloodDonationRegisterRep _bloodDonationRegisterRsp;
         private UserRep _userRep = new UserRep();
         public BloodDonationRegisterSvc()
         {
@@ -63,6 +63,28 @@ namespace BDS.BLL.Service
                 res.SetError("Error creating donation register: " + ex.Message);
             }
 
+            return res;
+        }
+        
+         public SingleRsp ReadById(int userId)
+        {
+            var res = new SingleRsp();
+            try
+            {
+                var register = _bloodDonationRegisterRsp.ReadById(userId);
+                if (register == null)
+                {
+                    res.SetError("No donation register found for the given user ID.");
+                }
+                else
+                {
+                    res.Data = register;
+                }
+            }
+            catch (Exception ex)
+            {
+                res.SetError("Error reading donation register: " + ex.Message);
+            }
             return res;
         }
     }
