@@ -8,6 +8,10 @@ namespace BDS.Web.Controllers
     public class BloodDonationRegisterController : Controller
     {
  private BloodDonationRegisterSvc _bloodDonationRegisterScv;
+ private BloodDonationRegisterSvc _bloodDonationRegisterScv;
+ private BloodDonationRegisterSvc _bloodDonationRegisterScv;
+ private BloodDonationRegisterSvc _bloodDonationRegisterScv;
+ private BloodDonationRegisterSvc _bloodDonationRegisterScv;
         public BloodDonationRegisterController()
         {
 
