@@ -4,7 +4,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.13.35931.197 d17.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BDS.Web", "BDS.Web\BDS.Web.csproj", "{EEFDBA86-DC60-4CB1-BD13-D668DC6C10A9}"
-EndProject
+EndProject 
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BDS.DAL", "BDS.DAL\BDS.DAL.csproj", "{7C39FA4F-CB0F-4DAC-B345-1CFB1F002F0C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BDS.BLL", "BDS.BLL\BDS.BLL.csproj", "{B51AE426-7020-4EE7-8873-1B64CE2415F6}"
