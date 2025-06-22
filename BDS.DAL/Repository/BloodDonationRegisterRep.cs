@@ -39,13 +39,6 @@ namespace BDS.DAL.Repository
         /// </summary>
         /// <param name="m"></param>
         /// <exception cref="ArgumentNullException"></exception>
-        public void Delete(BloodDonationRegister m)
-        {
-            if (m == null)
-            {
-                throw new ArgumentNullException(nameof(m), "BloodDonationRegister cannot be null");
-            }
-            base.Delete(m);
-        }
+       
     }
 }
