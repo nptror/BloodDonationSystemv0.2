@@ -1,7 +1,6 @@
 using BDS.Common.BLL;
 using BDS.Common.DTO;
 using BDS.Common.Response;
-using BDS.DAL.Models;
 using BDS.DAL.Repository;
 
 namespace BDS.BLL.Service
