@@ -27,9 +27,25 @@ namespace BDS.DAL.Repository
             base.Create(m);
         }
 
-        public override BloodDonationRegister ReadById(int registerId)
+        public List<BloodDonationRegister> Read(int userId)
         {
-            return GetAll.Where(r => r.RegisterId == registerId).OrderByDescending(r => r.RegisterDate).FirstOrDefault();
+            return GetAll
+           .Where(r => r.UserId == userId)
+           .OrderByDescending(r => r.RegisterDate) // nếu muốn sắp xếp theo ngày đăng ký mới nhất
+           .ToList();
+        }
+        /// <summary>
+        /// Xoá bản ghi đăng ký hiến máu
+        /// </summary>
+        /// <param name="m"></param>
+        /// <exception cref="ArgumentNullException"></exception>
+        public void Delete(BloodDonationRegister m)
+        {
+            if (m == null)
+            {
+                throw new ArgumentNullException(nameof(m), "BloodDonationRegister cannot be null");
+            }
+            base.Delete(m);
         }
     }
 }
