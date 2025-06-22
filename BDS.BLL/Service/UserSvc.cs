@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using BDS.Common.BLL;
 using BDS.Common.Response;
 using BDS.DAL.Models;

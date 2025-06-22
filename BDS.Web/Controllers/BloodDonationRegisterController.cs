@@ -1,5 +1,5 @@
 ﻿using BDS.BLL.Service;
-using BDS.Common.DTO;
+using BDS.DAL.DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
