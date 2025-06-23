@@ -20,50 +20,77 @@ namespace BDS.BLL.Service
         /// </summary>
         /// <param name="req"></param>
         /// <returns></returns>
-       public SingleRsp Create(BloodDonationRegisterDTO req)
-        {
-            var res = new SingleRsp();
+      
+public SingleRsp Create(BloodDonationRegisterDTO req)
+{
+    var res = new SingleRsp();
 
-            try
+    try
+    {
+        if (req != null)
+        {
+            if (_userRep != null)
             {
-                // 1. Kiểm tra UserId có tồn tại không
                 var user = _userRep.Read(u => u.UserId == req.UserId).FirstOrDefault();
-                if (user == null)
+                if (user != null)
+                {
+                    if (req.RegisterDate != null)
+                    {
+                        var isWithin90Days = req.RegisterDate >= DateOnly.FromDateTime(DateTime.Now.AddDays(-90));
+                        if (isWithin90Days)
+                        {
+                            if (_rep != null)
+                            {
+                                var now = DateTime.Now;
+                                var register = new BloodDonationRegister
+                                {
+                                    UserId = req.UserId,
+                                    RegisterDate = req.RegisterDate,
+                                    AvailableDate = req.RegisterDate?.AddDays(90),
+                                    Notes = req.Notes,
+                                    DonationAddress = req.DonationAddress,
+                                    Status = "Pending"
+                                };
+
+                                _rep.Create(register);
+                            }
+                            else
+                            {
+                                res.SetError("_rep is null");
+                            }
+                        }
+                        else
+                        {
+                            res.SetError("Register date must be within the last 90 days.");
+                        }
+                    }
+                    else
+                    {
+                        res.SetError("RegisterDate is required.");
+                    }
+                }
+                else
                 {
                     res.SetError("User not found");
-                    return res;
                 }
-
-                // 2. (Tuỳ chọn) Kiểm tra người dùng này có đăng ký trong vòng 90 ngày gần nhất không
-                var isWithin90Days = req.RegisterDate >= DateOnly.FromDateTime(DateTime.Now.AddDays(-90));
-
-
-                if (!isWithin90Days)
-                {
-                    res.SetError("Register date must be within the last 90 days.");
-                    return res;
-                }
-
-                // 3. Tạo bản ghi mới
-                var now = DateTime.Now;
-                var register = new BloodDonationRegister
-                {
-                    UserId = req.UserId,
-                    RegisterDate = req.RegisterDate,
-                    AvailableDate = req.RegisterDate?.AddDays(90), // Fix: Use nullable DateOnly's AddDays method
-                    Notes = req.Notes,
-                    DonationAddress = req.DonationAddress,
-                    Status = "Pending"
-                };
-
-                _rep.Create(register);
             }
-            catch (Exception ex)
+            else
             {
-                res.SetError("Error creating donation register: " + ex.Message);
+                res.SetError("_userRep is null");
             }
-
-            return res;
         }
+        else
+        {
+            res.SetError("Request is null");
+        }
+    }
+    catch (Exception ex)
+    {
+        res.SetError("Error creating donation register: " + ex.Message);
+    }
+
+    return res;
+}
+
     }
 }
